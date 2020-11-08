@@ -1,0 +1,39 @@
+<!--Crea tres botones en un documento html que al pulsar, uno te permita visitar la página anterior. 
+    Otro que al pulsar te permita visitar la página siguiente. 
+Y un tercero que permita ir a una página concreta que el usuario haya introducido. Muestra la cantidad de páginas del historial.-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ejercicio 2</title>
+</head>
+<body>
+        <input type="button" onclick="paginaAnterior()" value="Ir a página anterior">
+        <input type="button" onclick="paginaSiguiente()" value="Ir a página siguiente">
+        <input type="button" onclick="paginaElegida()" value="Ir a página anterior">
+
+        <p>Páginas del historial: <script>document.write(window.history.length)</script></p>
+
+
+        <script>
+            function paginaAnterior(){
+                window.history.back();
+            }
+
+            function paginaSiguiente(){
+                window.history.forward();
+            }
+
+            function paginaElegida(){
+                let num = prompt("Introduce el número de página de historial al que ir", "0");
+                window.history.go(Number.parseInt(num));
+            }
+
+            
+
+        </script>
+</body>
+</html>

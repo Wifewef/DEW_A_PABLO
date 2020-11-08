@@ -1,0 +1,29 @@
+<!--
+    Usando location, crea un botón en un documento html que al pulsar, 
+    el script asigne la web www.google.com y se pueda ver el historial de la ventana. 
+    Crea otro botón igual, pero que no se pueda ver el historial de la ventana.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ejercicio 4</title>
+</head>
+<body>
+    <input type="button" onclick="cambiarVentana()" value="Cambiar ventana">
+    <input type="button" onclick="cambiarVentanaSinHistorial()" value="Cambiar ventana sin historial">
+
+    <script>
+        function cambiarVentana(){
+            window.location.assign("http://www.google.com");
+        }
+
+        function cambiarVentanaSinHistorial(){
+            window.location.replace("http://www.google.com");
+        }
+    </script>
+</body>
+</html>

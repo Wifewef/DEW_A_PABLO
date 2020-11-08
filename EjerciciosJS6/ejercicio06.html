@@ -1,0 +1,112 @@
+<!--
+Cree una página web donde aparezcan los siguientes botones: 
+
+Abrir Ventana: abrirá una ventana de tamaño 400px*400px con la dirección www.google.es. La nueva ventana deberá aparecer centrada en la pantalla. 
+
+Cerrar Ventana: deberá cerrar la ventana que se acaba de crear. 
+Si la ventana aún no se ha creado o bien el usuario la cerró, deberá mostrar un error que diga “No hay ventana que cerrar”. 
+
+
+Ampliar: modificará el tamaño de la ventana aumentando tanto el ancho como en 30px. 
+Se mostrará un mensaje de error cuando no se pueda ampliar el alto o el ancho. 
+NOTA: para que funcione este y los siguientes apartados tiene que abrir una ventana en blanco, 
+para ello quite la dirección www.google.es 
+
+
+Reducir: modificará el tamaño de la ventana disminuyendo tanto el ancho como en 30px. 
+Se mostrará un mensaje de error cuando no se pueda reducir el alto o el ancho. 
+
+
+Mover: Ubicará la pantalla en la posición indicada previamente por el usuario (x e y). 
+Los valores tendrán que ser enteros positivos. 
+Antes de mover la nueva pantalla tendrá que comprobar que la nueva posición de la ventana es posible 
+teniendo en cuenta tanto la posición como su alto y ancho y el tamaño de la pantalla.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ejercicio 6</title>
+</head>
+<body>
+    <input type="button" onclick="abrirVentana()" value="Abrir ventana">
+    <input type="button" onclick="cerrarVentana()" value="Cerrar ventana">
+    <input type="button" onclick="ampliarVentana()" value="Ampliar ventana">
+    <input type="button" onclick="reducirVentana()" value="Reducir ventana">
+    <input type="button" onclick="moverVentana()" value="Mover ventana">
+
+
+    <script>
+        function abrirVentana(){
+            let height=400;
+            let width=400;
+            //Así obtenemos el punto central en ambos ejes
+            let top = (screen.height/2) - (height/2);
+            let left = (screen.width/2) - (width/2);
+
+            nuevaVentana = window.open("", "", "top="+top+", left="+left+", width=400px, height=400px");
+
+        }
+
+        function cerrarVentana(){
+         
+            if(typeof nuevaVentana == 'undefined' || nuevaVentana.closed){
+                alert("No hay ninguna ventana que cerrar");
+            }else{
+                nuevaVentana.close();
+            }
+        }
+
+        function ampliarVentana(){
+            if(typeof nuevaVentana == 'undefined' || nuevaVentana.closed){
+                alert("No hay ninguna ventana que modificar");
+                //Comprobamos que el tamaño introducido no se salga de los bordes de la pantalla
+            }else if(nuevaVentana.innerWidth + 30 > screen.height || nuevaVentana.innerHeight + 30 > screen.width){
+                alert("No se puede agrandar más la ventana");
+                nuevaVentana.focus();
+            }else{
+                nuevaVentana.resizeBy(30, 30);
+                nuevaVentana.focus();
+            }
+
+        }
+
+        function reducirVentana(){
+            if(typeof nuevaVentana == 'undefined' || nuevaVentana.closed){
+                alert("No hay ninguna ventana que modificar");
+            }else if(nuevaVentana.innerWidth  < 135 || nuevaVentana.innerHeight < 32){
+                alert("No se puede reducir más la ventana");
+                nuevaVentana.focus();
+            }else{
+                nuevaVentana.resizeBy(-30, -30);
+                nuevaVentana.focus();
+            }
+        }
+
+        function moverVentana(){
+            let x = Number.parseInt(prompt("Introduce la posición x"));
+            let y = Number.parseInt(prompt("Introduce la posición y"));
+            //Comprobamos que lo recibido sea un número entero
+            if(!Number.isInteger(x) || !Number.isInteger(y)){
+                alert("Introduce números enteros");
+            //Comprobamos que el tamaño introducido no se salga de los bordes de la pantalla
+            }else if(x < 0 || (x+nuevaVentana.innerWidth) > screen.width || y < 0 || (y+nuevaVentana.innerHeight) > screen.height){
+                alert("Introduce una posición válida");
+                nuevaVentana.focus();
+            }else{
+                //Movemos la ventana
+                nuevaVentana.moveTo(x, y);
+                nuevaVentana.focus();
+            }
+
+
+        }
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!-- Crea un botón en un documento html que al pulsar, el script averigüe si el usuario está conectado a Internet 
+y le devuelva en una nueva ventana el nombre y versión del navegador, el idioma y si tiene activadas o no las cookies y Java -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ejercicio 3</title>
+</head>
+<body>
+    <input type="button" onclick="comprobarInternet()" id="x" value="Comprueba tu Internet">
+
+
+    <script>
+        function comprobarInternet(){
+            let resultado = "Tu navegador está "+ (window.navigator.onLine ? "online" : "offline");
+            let elemento = document.createElement("h1");
+            let texto = document.createTextNode(resultado);
+            elemento.appendChild(texto);
+            document.body.appendChild(elemento);
+
+            ventana = window.open("", "", "width=400px, height=300px");
+            ventana.document.write("<h5>Nombre del navegador:"+window.navigator.appName+" </h5>");
+            ventana.document.write("<h5>Versión del navegador:"+window.navigator.appVersion+" </h5>");
+            ventana.document.write("<h5>Idioma:"+window.navigator.language+" </h5>");
+            ventana.document.write("<h5>Cookies activadas :"+window.navigator.cookieEnabled+" </h5>");
+
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!-- Crea dos botones en un documento html que al pulsar, uno abra una nueva ventana de ancho 200px y alto 100px con la siguiente información:
+
+Nombre de la ventana, Ancho externo, Alto externo, Ancho interno, Alto interno, Scroll H, Scroll V, Distancia desde la izquierda y Distancia desde arriba.
+
+Y el otro botón que sea capaz de cerrar esa nueva ventana abierta. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Actividad 1</title>
+</head>
+<body>
+        <input type="button" onclick="abrirVentana()" value="Abrir ventana">
+        <input type="button" onclick="cerrarVentana()" value="Cerrar ventana">
+<script>
+    function abrirVentana(){
+        miVentana = window.open("", "", "width=200px, height=100px");
+        miVentana.document.write("<h5>Nombre de ventana: "+window.name+"</h5>");
+        miVentana.document.write("<h5>Ancho externo: "+window.outerWidth+"</h5>");
+        miVentana.document.write("<h5>Ancho interno: "+window.innerWidth+"</h5>");
+        miVentana.document.write("<h5>Alto externo: "+window.outerHeight+"</h5>");
+        miVentana.document.write("<h5>Alto interno: "+window.innerHeight+"</h5>");
+        miVentana.document.write("<h5>Scroll H: "+window.scrollX+"</h5>");
+        miVentana.document.write("<h5>Scroll V: "+window.scrollY+"</h5>");
+        miVentana.document.write("<h5>Distancia desde izquierda: "+window.screenLeft+"</h5>");
+        miVentana.document.write("<h5>Distancia desde arriba: "+window.screenTop+"</h5>");
+    }
+
+    function cerrarVentana(){
+        miVentana.close();
+    }
+
+</script>
+</body>
+</html>
+

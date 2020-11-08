@@ -1,0 +1,28 @@
+<!--Averigua utilizando el objeto screen, el tamaño de la barra de tareas de Windows. 
+Crea un botón en un documento html que al pulsar, abra una nueva ventana y muestre esa información.-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Actividad 5</title>
+</head>
+<body>
+
+    <input type="button" onclick="getTaskbarSize()" value="Obtener tamaño de la barra de tareas">
+
+    
+
+    <script>
+        function getTaskbarSize(){
+            let alturaTaskbar = window.screen.height - window.screen.availHeight;
+
+            ventana = window.open("", "", "width=400px, height=300px");
+            ventana.document.write("<h5>El tamaño de tu barra de tareas es:"+alturaTaskbar+" </h5>");
+
+        }
+    </script>
+</body>
+</html>
